@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".add_movie"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="14dp">
+
+    <TextView
+        android:id="@+id/txtMovieAddTitle"
+        android:layout_width="448dp"
+        android:layout_height="58dp"
+        android:background="#D590DA9B"
+        android:gravity="center"
+        android:text="Add Movie"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etMovieTitle"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="88dp"
+        android:ems="10"
+        android:hint="Movie Title"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/txtMovieTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovieAddTitle" />
+
+    <TextView
+        android:id="@+id/txtMovieDuration"
+        android:layout_width="109dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Duration"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovieTitle" />
+
+    <TextView
+        android:id="@+id/txtMovieGenre"
+        android:layout_width="108dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Genre"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovieAuthor" />
+
+    <TextView
+        android:id="@+id/txtMovieTitle"
+        android:layout_width="109dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="88dp"
+        android:gravity="center"
+        android:text="Title"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovieAddTitle" />
+
+    <TextView
+        android:id="@+id/txtMovieAuthor"
+        android:layout_width="109dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Author"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovieDuration" />
+
+    <Spinner
+        android:id="@+id/spnrGenre"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:entries="@array/genresArray"
+        app:layout_constraintStart_toEndOf="@+id/txtMovieGenre"
+        app:layout_constraintTop_toBottomOf="@+id/etMovieAuthor" />
+
+    <EditText
+        android:id="@+id/etMovieAuthor"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Movie Author"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/txtMovieAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/etMovieDuration" />
+
+    <EditText
+        android:id="@+id/etMovieDuration"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Movie Duration"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/txtMovieDuration"
+        app:layout_constraintTop_toBottomOf="@+id/etMovieTitle" />
+
+    <Button
+        android:id="@+id/btnSaveMovie"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="96dp"
+        android:background="#99C16A"
+
+        android:text="Save Movie"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:icon="@android:drawable/ic_menu_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelMovie" />
+
+    <Button
+        android:id="@+id/btnCancelMovie"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="96dp"
+        android:background="#C1746A"
+
+        android:text="Cancel Movie"
+        android:textStyle="bold"
+        app:icon="@android:drawable/ic_menu_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveMovie"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="20dp"
+        android:background="#A5CF82"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovieAddTitle"
+        app:srcCompat="@android:drawable/ic_menu_share" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabYoutube"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/fabShare"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovieAddTitle"
+        app:srcCompat="@android:drawable/presence_video_busy" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="22dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/fabYoutube"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovieAddTitle"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+</androidx.constraintlayout.widget.ConstraintLayout>
