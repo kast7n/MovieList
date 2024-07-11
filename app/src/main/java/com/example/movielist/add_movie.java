@@ -79,6 +79,28 @@ public class add_movie extends AppCompatActivity {
             }
         });
 
+        fabYoutube.setOnClickListener(new View.OnClickListener() {
+            String strMovieTitle = movieTitle.getText().toString();
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SEARCH);
+                intent.setPackage("com.google.android.youtube");
+                intent.putExtra("query", strMovieTitle + " Movie");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+
+        fabDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(action == 2){
+
+                }
+            }
+        });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +109,9 @@ public class add_movie extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
