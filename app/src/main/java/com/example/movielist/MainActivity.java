@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         movieList = new ArrayList<>();
         movieInfoList = new ArrayList<>();
         if(savedInstanceState != null){
-            movieInfoList = savedInstanceState.getStringArrayList("moveListInfo");
+            movieInfoList = savedInstanceState.getStringArrayList("movieListInfo");
             movieList = savedInstanceState.getParcelableArrayList("movieList");
         }
         adapter = new ArrayAdapter<>(current, android.R.layout.simple_list_item_1,movieInfoList);
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putStringArrayList("moveListInfo",movieInfoList);
+        outState.putStringArrayList("movieListInfo",movieInfoList);
         outState.putParcelableArrayList("movieList",movieList);
     }
     @Override

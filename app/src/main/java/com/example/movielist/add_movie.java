@@ -1,5 +1,6 @@
 package com.example.movielist;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +11,12 @@ import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class add_movie extends AppCompatActivity {
 
@@ -28,10 +32,14 @@ public class add_movie extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Activity current = this;
         EditText movieTitle = findViewById(R.id.etMovieTitle);
         EditText movieDuration = findViewById(R.id.etMovieDuration);
         EditText movieAuthor = findViewById(R.id.etMovieAuthor);
         Spinner movieGenreSpinner= findViewById(R.id.spnrGenre);
+        FloatingActionButton fabShare = findViewById(R.id.fabShare);
+        FloatingActionButton fabDelete = findViewById(R.id.fabDelete);
+        FloatingActionButton fabYoutube = findViewById(R.id.fabYoutube);
 
 
         Button btnCancel = findViewById(R.id.btnCancelMovie);
@@ -51,6 +59,27 @@ public class add_movie extends AppCompatActivity {
             }
         }
 
+        fabShare.setOnClickListener(new View.OnClickListener() {
+
+            String strMovieTitle = movieTitle.getText().toString();
+            String strMovieDuration = movieDuration.getText().toString();
+            String strMovieGenre = (String)movieGenreSpinner.getSelectedItem();
+            String strMovieAuthor = movieAuthor.getText().toString();
+
+            String strMessage ="Movie Title: " + strMovieTitle + "\nGenre: " + strMovieDuration +" | Author: " + strMovieGenre + " | Duration" + strMovieAuthor;
+            @Override
+            public void onClick(View view) {
+                String mimeType = "text/plain";
+                ShareCompat.IntentBuilder
+                        .from(current)
+                        .setType(mimeType)
+                        .setChooserTitle("Share With")
+                        .setText(strMessage)
+                        .startChooser();
+            }
+        });
+
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,19 +94,19 @@ public class add_movie extends AppCompatActivity {
                 String strMovieTitle = movieTitle.getText().toString();
                 String strMovieDuration = movieDuration.getText().toString();
                 String strMovieGenre = (String)movieGenreSpinner.getSelectedItem();
-                String strMoveAuthour = movieAuthor.getText().toString();
+                String strMovieAuthor = movieAuthor.getText().toString();
 
 
-                Task task = new Task(strTaskTitle,intTaskDuration,strTaskDescription,strTaskDueDate,strTaskCategory);
+                Movie movie = new Movie(strMovieTitle,strMovieGenre,strMovieAuthor,strMovieDuration);
                 if(action == 2 ){
                     Intent editIntent = new Intent();
-                    editIntent.putExtra("editedTask",task);
-                    editIntent.putExtra("ogTaskIndex", ogTaskIndex);
+                    editIntent.putExtra("editedMovie",movie);
+                    editIntent.putExtra("ogMovieIndex", ogMovieIndex);
                     setResult(RESULT_OK,editIntent);
                     finish();
                 }else{
                     Intent addIntent = new Intent();
-                    addIntent.putExtra("newTask",task);
+                    addIntent.putExtra("newMovie",movie);
                     setResult(RESULT_OK,addIntent);
                     finish();
                 }
